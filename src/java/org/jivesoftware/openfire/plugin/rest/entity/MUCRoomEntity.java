@@ -28,6 +28,8 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import org.jivesoftware.openfire.muc.MUCRole.Role;
+
 @XmlRootElement(name = "chatRoom")
 @XmlType(propOrder = { "roomName", "naturalName", "description", "password", "subject", "creationDate",
         "modificationDate", "maxUsers", "persistent", "publicRoom", "registrationEnabled", "canAnyoneDiscoverJID",
@@ -60,7 +62,10 @@ public class MUCRoomEntity {
     private boolean moderated;
     private String allowPM;
 
-    private List<String> broadcastPresenceRoles;
+    /*
+     * Custom Code: Change the List<String> to List<Role> Enum
+     */
+    private List<Role> broadcastPresenceRoles;
 
     private List<String> owners;
     private List<String> ownerGroups;
@@ -209,7 +214,10 @@ public class MUCRoomEntity {
         this.canOccupantsInvite = canOccupantsInvite;
     }
 
-    public void setBroadcastPresenceRoles(List<String> broadcastPresenceRoles) {
+    /*
+     * Custom Code: Change the List<String> to List<Role> Enum
+     */
+    public void setBroadcastPresenceRoles(List<Role> broadcastPresenceRoles) {
         this.broadcastPresenceRoles = broadcastPresenceRoles;
     }
 
@@ -268,10 +276,13 @@ public class MUCRoomEntity {
         this.allowPM = allowPM == null ? "anyone" : allowPM;
     }
 
+    
+    /*
+     * Custom Code: Change the List<String> to List<Role> Enum
+     */
     @XmlElement(name = "broadcastPresenceRole")
     @XmlElementWrapper(name = "broadcastPresenceRoles")
-    @JsonProperty(value = "broadcastPresenceRoles")
-    public List<String> getBroadcastPresenceRoles() {
+    public List<Role> getBroadcastPresenceRoles() {
         return broadcastPresenceRoles;
     }
 
@@ -363,4 +374,19 @@ public class MUCRoomEntity {
         this.adminGroups = adminGroups;
     }
 
+	@Override
+	public String toString() {
+		return "MUCRoomEntity [roomName=" + roomName + ", description=" + description + ", password=" + password
+				+ ", subject=" + subject + ", naturalName=" + naturalName + ", maxUsers=" + maxUsers + ", creationDate="
+				+ creationDate + ", modificationDate=" + modificationDate + ", persistent=" + persistent
+				+ ", publicRoom=" + publicRoom + ", registrationEnabled=" + registrationEnabled
+				+ ", canAnyoneDiscoverJID=" + canAnyoneDiscoverJID + ", canOccupantsChangeSubject="
+				+ canOccupantsChangeSubject + ", canOccupantsInvite=" + canOccupantsInvite + ", canChangeNickname="
+				+ canChangeNickname + ", logEnabled=" + logEnabled + ", loginRestrictedToNickname="
+				+ loginRestrictedToNickname + ", membersOnly=" + membersOnly + ", moderated=" + moderated + ", allowPM="
+				+ allowPM + ", broadcastPresenceRoles=" + broadcastPresenceRoles + ", owners=" + owners
+				+ ", ownerGroups=" + ownerGroups + ", admins=" + admins + ", adminGroups=" + adminGroups + ", members="
+				+ members + ", memberGroups=" + memberGroups + ", outcasts=" + outcasts + ", outcastGroups="
+				+ outcastGroups + "]";
+	}
 }

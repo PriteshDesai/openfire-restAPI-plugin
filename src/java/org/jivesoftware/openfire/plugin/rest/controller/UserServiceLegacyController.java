@@ -26,6 +26,7 @@ import org.jivesoftware.openfire.XMPPServer;
 import org.jivesoftware.openfire.group.Group;
 import org.jivesoftware.openfire.group.GroupAlreadyExistsException;
 import org.jivesoftware.openfire.group.GroupManager;
+import org.jivesoftware.openfire.group.GroupNameInvalidException;
 import org.jivesoftware.openfire.group.GroupNotFoundException;
 import org.jivesoftware.openfire.lockout.LockOutManager;
 import org.jivesoftware.openfire.roster.Roster;
@@ -74,6 +75,11 @@ public class UserServiceLegacyController {
         rosterManager = server.getRosterManager();
     }
 
+    
+    /*
+   	 * Custom Code: Add only throws GroupNameInvalidException in the below method
+   	 */ 
+    
     /**
      * Creates the user.
      *
@@ -86,10 +92,11 @@ public class UserServiceLegacyController {
      * @throws GroupAlreadyExistsException the group already exists exception
      * @throws UserNotFoundException the user not found exception
      * @throws GroupNotFoundException the group not found exception
+     * @throws GroupNameInvalidException 
      */
     public void createUser(String username, String password, String name, String email, String groupNames)
             throws UserAlreadyExistsException, GroupAlreadyExistsException, UserNotFoundException,
-            GroupNotFoundException {
+            GroupNotFoundException, GroupNameInvalidException {
         userManager.createUser(username, password, name, email);
         userManager.getUser(username);
 
@@ -154,6 +161,10 @@ public class UserServiceLegacyController {
         LockOutManager.getInstance().enableAccount(username);
     }
 
+    /*
+   	 * Custom Code: Add only throws GroupNameInvalidException in the below method
+   	 */ 
+    
     /**
      * Update user.
      *
@@ -164,9 +175,10 @@ public class UserServiceLegacyController {
      * @param groupNames the group names
      * @throws UserNotFoundException the user not found exception
      * @throws GroupAlreadyExistsException the group already exists exception
+     * @throws GroupNameInvalidException 
      */
     public void updateUser(String username, String password, String name, String email, String groupNames)
-            throws UserNotFoundException, GroupAlreadyExistsException {
+            throws UserNotFoundException, GroupAlreadyExistsException, GroupNameInvalidException {
         User user = getUser(username);
         if (password != null)
             user.setPassword(password);

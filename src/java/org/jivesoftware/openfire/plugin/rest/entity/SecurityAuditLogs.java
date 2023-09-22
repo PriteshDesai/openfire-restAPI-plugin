@@ -43,4 +43,10 @@ public class SecurityAuditLogs {
 	public void setSecurityAuditLog(List<SecurityAuditLog> securityAuditLog) {
 		this.securityAuditLog = securityAuditLog;
 	}
+
+	@Override
+	public String toString() {
+		return "SecurityAuditLogs [securityAuditLog=" + securityAuditLog + "]";
+	}
+	
 }

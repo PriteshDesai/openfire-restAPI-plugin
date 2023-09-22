@@ -49,4 +49,9 @@ public class MUCInvitationsEntity extends MUCInvitationEntity
         this.jidsToInvite = jidsToInvite;
     }
 
+	@Override
+	public String toString() {
+		return "MUCInvitationsEntity [jidsToInvite=" + jidsToInvite + "]";
+	}
+
 }

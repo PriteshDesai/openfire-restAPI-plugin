@@ -86,4 +86,12 @@ public class RoomCreationResultEntities {
     public List<RoomCreationResultEntity> getOtherResults() {
         return otherResults;
     }
+
+	@Override
+	public String toString() {
+		return "RoomCreationResultEntities [successResults=" + successResults + ", failureResults=" + failureResults
+				+ ", otherResults=" + otherResults + "]";
+	}
+    
+    
 }

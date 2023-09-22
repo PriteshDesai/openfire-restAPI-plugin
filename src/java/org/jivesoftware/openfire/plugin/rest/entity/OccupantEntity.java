@@ -65,4 +65,11 @@ public class OccupantEntity {
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
+
+	@Override
+	public String toString() {
+		return "OccupantEntity [jid=" + jid + ", userAddress=" + userAddress + ", role=" + role + ", affiliation="
+				+ affiliation + "]";
+	}
+    
 }

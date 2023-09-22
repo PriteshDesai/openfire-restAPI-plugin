@@ -23,6 +23,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
+import org.jivesoftware.openfire.group.GroupNameInvalidException;
 import org.jivesoftware.openfire.plugin.rest.controller.UserServiceController;
 import org.jivesoftware.openfire.plugin.rest.entity.UserGroupsEntity;
 import org.jivesoftware.openfire.plugin.rest.exceptions.ServiceException;
@@ -57,6 +59,9 @@ public class UserGroupService {
         return new UserGroupsEntity(plugin.getUserGroups(username));
     }
 
+    /*
+	 * Custom Code: Add only throws GroupNameInvalidException in the below method
+	 */ 
     @POST
     @Operation( summary = "Add user to groups",
         description = "Add a particular user to a collection of groups. When a group that is provided does not exist, it will be automatically created if possible.",
@@ -68,12 +73,15 @@ public class UserGroupService {
     public Response addUserToGroups(
             @Parameter(description = "The username of the user that is to be added to groups.", required = true) @PathParam("username") String username,
             @RequestBody(description = "A collection of names for groups that the user is to be added to.", required = true) UserGroupsEntity userGroupsEntity)
-        throws ServiceException
+        throws ServiceException, GroupNameInvalidException
     {
         plugin.addUserToGroups(username, userGroupsEntity);
         return Response.status(Response.Status.CREATED).build();
     }
     
+    /*
+	 * Custom Code: Add only throws GroupNameInvalidException in the below method
+	 */ 
     @POST
     @Path("/{groupName}")
     @Operation( summary = "Add user to group",
@@ -85,7 +93,7 @@ public class UserGroupService {
     public Response addUserToGroup(
             @Parameter(description = "The username of the user that is to be added to a group.", required = true) @PathParam("username") String username,
             @Parameter(description = "The name of the group that the user is to be added to.", required = true) @PathParam("groupName") String groupName)
-        throws ServiceException
+        throws ServiceException, GroupNameInvalidException
     {
         plugin.addUserToGroup(username, groupName);
         return Response.status(Response.Status.CREATED).build();

@@ -20,41 +20,60 @@ import javax.ws.rs.core.Response;
 
 import org.jivesoftware.openfire.SessionManager;
 import org.jivesoftware.openfire.plugin.rest.entity.MessageEntity;
+import org.jivesoftware.openfire.plugin.rest.entity.UnicastMessageEntity;
 import org.jivesoftware.openfire.plugin.rest.exceptions.ExceptionType;
 import org.jivesoftware.openfire.plugin.rest.exceptions.ServiceException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xmpp.packet.JID;
 
 /**
  * The Class MessageController.
  */
 public class MessageController {
-    /** The Constant INSTANCE. */
-    public static final MessageController INSTANCE = new MessageController();
+	
+	Logger Log = LoggerFactory.getLogger(MessageController.class);
+	
+	/** The Constant INSTANCE. */
+	public static final MessageController INSTANCE = new MessageController();
 
-    /**
-     * Gets the single instance of MessageController.
-     *
-     * @return single instance of MessageController
-     */
-    public static MessageController getInstance() {
-        return INSTANCE;
-    }
+	/**
+	 * Gets the single instance of MessageController.
+	 *
+	 * @return single instance of MessageController
+	 */
+	public static MessageController getInstance() {
+		return INSTANCE;
+	}
 
-    /**
-     * Send broadcast message.
-     *
-     * @param messageEntity
-     *            the message entity
-     * @throws ServiceException
-     *             the service exception
-     */
-    public void sendBroadcastMessage(MessageEntity messageEntity) throws ServiceException {
-        if (messageEntity.getBody() != null && !messageEntity.getBody().isEmpty()) {
-            SessionManager.getInstance().sendServerMessage(null, messageEntity.getBody());
-        } else {
-            throw new ServiceException("Message content/body is null or empty", "",
-                    ExceptionType.ILLEGAL_ARGUMENT_EXCEPTION,
-                    Response.Status.BAD_REQUEST);
-        }
-    }
+	/**
+	 * Send broadcast message.
+	 *
+	 * @param messageEntity the message entity
+	 * @throws ServiceException the service exception
+	 */
+	public void sendBroadcastMessage(MessageEntity messageEntity) throws ServiceException {
+		if (messageEntity.getBody() != null && !messageEntity.getBody().isEmpty()) {
+			SessionManager.getInstance().sendServerMessage(null, messageEntity.getBody());
+		} else {
+			throw new ServiceException("Message content/body is null or empty", "",
+					ExceptionType.ILLEGAL_ARGUMENT_EXCEPTION, Response.Status.BAD_REQUEST);
+		}
+	}
 
+	/*
+	 * >>>>>>>>>>>>>>>>>>>>>>>>> Custom code Started  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 */
+	public void sendUnicastMessage(UnicastMessageEntity unicastMessageEntity) throws ServiceException {
+		Log.debug("MessageController: sendUnicastMessage(): START : unicastMessageEntity: " + unicastMessageEntity.toString());
+		
+		SessionManager.getInstance().sendClientMessage(new JID(unicastMessageEntity.getFromJID()),
+				new JID(unicastMessageEntity.getToJID()), unicastMessageEntity.getSubject(),
+				unicastMessageEntity.getBody());
+		
+		Log.debug("MessageController: sendUnicastMessage(): END");
+	}
+	/*
+	 * <<<<<<<<<<<<<<<<<<<<<<<<<<<< Custom code Ended  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	 */
 }

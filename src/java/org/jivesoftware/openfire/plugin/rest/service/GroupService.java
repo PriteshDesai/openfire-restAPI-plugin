@@ -23,6 +23,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
+import org.jivesoftware.openfire.group.GroupNameInvalidException;
 import org.jivesoftware.openfire.plugin.rest.controller.GroupController;
 import org.jivesoftware.openfire.plugin.rest.entity.GroupEntities;
 import org.jivesoftware.openfire.plugin.rest.entity.GroupEntity;
@@ -56,6 +58,10 @@ public class GroupService {
         return new GroupEntities(groupController.getGroups());
     }
 
+    
+    /*
+	 * Custom Code: Add only throws GroupNameInvalidException in the below method
+	 */   
     @POST
     @Operation( summary = "Create group",
         description = "Create a new user group.",
@@ -67,7 +73,7 @@ public class GroupService {
     @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public Response createGroup(
             @RequestBody(description = "The group that needs to be created.", required = true) GroupEntity groupEntity)
-        throws ServiceException
+        throws ServiceException, GroupNameInvalidException
     {
         groupController.createGroup(groupEntity);
         return Response.status(Response.Status.CREATED).build();

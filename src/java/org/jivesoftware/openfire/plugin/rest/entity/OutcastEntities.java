@@ -49,4 +49,10 @@ public class OutcastEntities extends AffiliatedEntities
     {
         return outcasts == null ? new String[0] : outcasts.toArray(new String[0]);
     }
+
+	@Override
+	public String toString() {
+		return "OutcastEntities [outcasts=" + outcasts + "]";
+	}
+    
 }

@@ -34,4 +34,8 @@ public class ClusteringEntity {
         return status;
     }
 
+	@Override
+	public String toString() {
+		return "ClusteringEntity [status=" + status + "]";
+	}
 }

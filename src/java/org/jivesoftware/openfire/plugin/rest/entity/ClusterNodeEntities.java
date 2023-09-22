@@ -42,4 +42,9 @@ public class ClusterNodeEntities
     public void setClusterNodeEntities(List<ClusterNodeEntity> clusterNodeEntities) {
         this.clusterNodeEntities = clusterNodeEntities;
     }
+
+	@Override
+	public String toString() {
+		return "ClusterNodeEntities [clusterNodeEntities=" + clusterNodeEntities + "]";
+	}
 }

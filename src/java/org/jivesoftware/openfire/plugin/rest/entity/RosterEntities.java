@@ -67,4 +67,11 @@ public class RosterEntities {
         this.roster = roster;
     }
 
+	@Override
+	public String toString() {
+		return "RosterEntities [roster=" + roster + "]";
+	}
+    
+    
+
 }

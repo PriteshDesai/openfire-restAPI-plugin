@@ -83,4 +83,10 @@ public class ClusterNodeEntity {
     public void setSeniorMember(boolean seniorMember) {
         this.seniorMember = seniorMember;
     }
+
+	@Override
+	public String toString() {
+		return "ClusterNodeEntity [hostName=" + hostName + ", nodeID=" + nodeID + ", joinedTime=" + joinedTime
+				+ ", seniorMember=" + seniorMember + "]";
+	}
 }

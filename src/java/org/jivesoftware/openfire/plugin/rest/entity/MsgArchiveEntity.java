@@ -42,4 +42,10 @@ public class MsgArchiveEntity {
         this.count = count;
     }
 
+	@Override
+	public String toString() {
+		return "MsgArchiveEntity [jid=" + jid + ", count=" + count + "]";
+	}
+
+    
 }

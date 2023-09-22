@@ -170,4 +170,11 @@ public class UserEntity {
     public void setProperties(List<UserProperty> properties) {
         this.properties = properties;
     }
+
+	@Override
+	public String toString() {
+		return "UserEntity [username=" + username + ", name=" + name + ", email=" + email + ", password=" + password
+				+ ", properties=" + properties + "]";
+	}
+
 }

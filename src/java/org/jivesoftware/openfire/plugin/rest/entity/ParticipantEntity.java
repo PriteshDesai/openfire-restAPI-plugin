@@ -56,4 +56,9 @@ public class ParticipantEntity {
         this.affiliation = affiliation;
     }
 
+	@Override
+	public String toString() {
+		return "ParticipantEntity [jid=" + jid + ", role=" + role + ", affiliation=" + affiliation + "]";
+	}
+    
 }

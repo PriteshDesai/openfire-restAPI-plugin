@@ -43,4 +43,10 @@ public class SessionEntities {
     public void setSessions(List<SessionEntity> sessions) {
         this.sessions = sessions;
     }
+
+	@Override
+	public String toString() {
+		return "SessionEntities [sessions=" + sessions + "]";
+	}
+    
 }

@@ -68,4 +68,8 @@ public class GroupEntities {
         this.groups = groups;
     }
 
+	@Override
+	public String toString() {
+		return "GroupEntities [groups=" + groups + "]";
+	}
 }

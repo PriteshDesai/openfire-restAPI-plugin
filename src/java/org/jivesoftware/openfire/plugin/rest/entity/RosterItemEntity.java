@@ -148,4 +148,11 @@ public class RosterItemEntity {
     public void setGroups(List<String> groups) {
         this.groups = groups;
     }
+
+	@Override
+	public String toString() {
+		return "RosterItemEntity [jid=" + jid + ", nickname=" + nickname + ", subscriptionType=" + subscriptionType
+				+ ", groups=" + groups + "]";
+	}
+    
 }

@@ -49,4 +49,10 @@ public class MemberEntities extends AffiliatedEntities
     {
         return members == null ? new String[0] : members.toArray(new String[0]);
     }
+
+	@Override
+	public String toString() {
+		return "MemberEntities [members=" + members + "]";
+	}
+
 }

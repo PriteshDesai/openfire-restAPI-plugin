@@ -115,7 +115,11 @@ public class JerseyWrapper extends ResourceConfig {
             UserLockoutService.class,
             UserRosterService.class,
             UserService.class,
-            UserServiceLegacy.class
+            UserServiceLegacy.class,
+            /*
+        	 * Custom Code: Add CustomPollingService class for the poll related services
+        	 */   
+            CustomPollingService.class
         );
 
         // Exception mapper

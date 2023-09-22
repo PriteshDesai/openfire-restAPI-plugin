@@ -39,4 +39,10 @@ public class MUCServiceEntities {
     public void setServices(List<MUCServiceEntity> services) {
         this.services = services;
     }
+
+	@Override
+	public String toString() {
+		return "MUCServiceEntities [services=" + services + "]";
+	}
+    
 }

@@ -72,4 +72,11 @@ public class MUCServiceEntity {
     public void setHidden(boolean hidden) {
         this.hidden = hidden;
     }
+
+	@Override
+	public String toString() {
+		return "MUCServiceEntity [serviceName=" + serviceName + ", description=" + description + ", hidden=" + hidden
+				+ "]";
+	}
+
 }

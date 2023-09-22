@@ -43,4 +43,10 @@ public class MUCRoomEntities {
     public void setMucRooms(List<MUCRoomEntity> mucRooms) {
         this.mucRooms = mucRooms;
     }
+
+	@Override
+	public String toString() {
+		return "MUCRoomEntities [mucRooms=" + mucRooms + "]";
+	}
+    
 }

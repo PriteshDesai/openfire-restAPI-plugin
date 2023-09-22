@@ -89,4 +89,9 @@ public class UserProperty {
         this.value = value;
     }
 
+	@Override
+	public String toString() {
+		return "UserProperty [key=" + key + ", value=" + value + "]";
+	}
+
 }

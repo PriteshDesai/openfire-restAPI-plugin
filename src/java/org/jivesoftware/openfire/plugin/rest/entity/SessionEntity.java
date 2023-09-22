@@ -162,4 +162,13 @@ public class SessionEntity {
         this.secure = secure;
     }
 
+	@Override
+	public String toString() {
+		return "SessionEntity [sessionId=" + sessionId + ", username=" + username + ", resource=" + resource + ", node="
+				+ node + ", sessionStatus=" + sessionStatus + ", presenceStatus=" + presenceStatus
+				+ ", presenceMessage=" + presenceMessage + ", priority=" + priority + ", hostAddress=" + hostAddress
+				+ ", hostName=" + hostName + ", creationDate=" + creationDate + ", lastActionDate=" + lastActionDate
+				+ ", secure=" + secure + "]";
+	}
+
 }

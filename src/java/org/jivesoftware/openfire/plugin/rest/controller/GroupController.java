@@ -24,6 +24,7 @@ import org.jivesoftware.openfire.XMPPServer;
 import org.jivesoftware.openfire.group.Group;
 import org.jivesoftware.openfire.group.GroupAlreadyExistsException;
 import org.jivesoftware.openfire.group.GroupManager;
+import org.jivesoftware.openfire.group.GroupNameInvalidException;
 import org.jivesoftware.openfire.group.GroupNotFoundException;
 import org.jivesoftware.openfire.plugin.rest.entity.GroupEntity;
 import org.jivesoftware.openfire.plugin.rest.exceptions.ExceptionType;
@@ -91,6 +92,9 @@ public class GroupController {
         return groupEntity;
     }
 
+	/*
+	 * Custom Code: Add only throws GroupNameInvalidException in the below method
+	 */    
     /**
      * Creates the group.
      *
@@ -99,8 +103,9 @@ public class GroupController {
      * @return the group
      * @throws ServiceException
      *             the service exception
+     * @throws GroupNameInvalidException 
      */
-    public Group createGroup(GroupEntity groupEntity) throws ServiceException {
+    public Group createGroup(GroupEntity groupEntity) throws ServiceException, GroupNameInvalidException {
         Group group;
         if (groupEntity != null && !groupEntity.getName().isEmpty()) {
             try {

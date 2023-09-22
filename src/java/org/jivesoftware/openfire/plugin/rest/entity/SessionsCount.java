@@ -86,4 +86,10 @@ public class SessionsCount {
     public void setClusterSessions(int clusterSessions) {
         this.clusterSessions = clusterSessions;
     }
+
+	@Override
+	public String toString() {
+		return "SessionsCount [localSessions=" + localSessions + ", clusterSessions=" + clusterSessions + "]";
+	}
+
 }

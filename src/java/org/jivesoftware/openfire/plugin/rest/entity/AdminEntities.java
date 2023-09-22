@@ -49,4 +49,9 @@ public class AdminEntities extends AffiliatedEntities
     {
         return admins == null ? new String[0] : admins.toArray(new String[0]);
     }
+
+	@Override
+	public String toString() {
+		return "AdminEntities [admins=" + admins + "]";
+	}
 }

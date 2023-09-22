@@ -42,4 +42,10 @@ public class OccupantEntities {
     public void setOccupants(List<OccupantEntity> occupants) {
         this.occupants = occupants;
     }
+
+	@Override
+	public String toString() {
+		return "OccupantEntities [occupants=" + occupants + "]";
+	}
+
 }

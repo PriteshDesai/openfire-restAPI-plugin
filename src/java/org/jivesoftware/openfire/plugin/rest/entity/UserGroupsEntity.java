@@ -71,4 +71,9 @@ public class UserGroupsEntity {
         this.groupNames = groupNames;
     }
 
+	@Override
+	public String toString() {
+		return "UserGroupsEntity [groupNames=" + groupNames + "]";
+	}
+
 }

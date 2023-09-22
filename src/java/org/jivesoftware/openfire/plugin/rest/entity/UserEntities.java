@@ -70,4 +70,8 @@ public class UserEntities {
         this.users = users;
     }
 
+	@Override
+	public String toString() {
+		return "UserEntities [users=" + users + "]";
+	}
 }

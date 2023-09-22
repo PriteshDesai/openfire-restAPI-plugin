@@ -39,4 +39,10 @@ public class MUCRoomMessageEntities {
     public void setMessages(List<MUCRoomMessageEntity> messages) {
         this.messages = messages;
     }
+
+	@Override
+	public String toString() {
+		return "MUCRoomMessageEntities [messages=" + messages + "]";
+	}
+	
 }

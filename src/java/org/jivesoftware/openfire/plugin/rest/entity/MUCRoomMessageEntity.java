@@ -73,5 +73,11 @@ public class MUCRoomMessageEntity {
     @XmlElement(name="delay_from")
     public String getDelayFrom() { return delayFrom; }
     public void setDelayFrom(String delayFrom) { this.delayFrom = delayFrom; }
-
+	
+    
+    @Override
+	public String toString() {
+		return "MUCRoomMessageEntity [to=" + to + ", from=" + from + ", type=" + type + ", body=" + body
+				+ ", delayStamp=" + delayStamp + ", delayFrom=" + delayFrom + "]";
+	}
 }

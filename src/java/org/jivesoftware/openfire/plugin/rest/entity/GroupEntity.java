@@ -172,4 +172,10 @@ public class GroupEntity {
      */
     public void setShared(Boolean shared) { this.shared = shared; }
 
+	@Override
+	public String toString() {
+		return "GroupEntity [name=" + name + ", description=" + description + ", admins=" + admins + ", members="
+				+ members + ", shared=" + shared + "]";
+	}
+	
 }

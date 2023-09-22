@@ -43,4 +43,10 @@ public class ParticipantEntities {
     public void setParticipants(List<ParticipantEntity> participants) {
         this.participants = participants;
     }
+
+	@Override
+	public String toString() {
+		return "ParticipantEntities [participants=" + participants + "]";
+	}
+    
 }

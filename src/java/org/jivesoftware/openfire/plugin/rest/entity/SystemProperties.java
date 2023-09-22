@@ -56,4 +56,10 @@ public class SystemProperties {
     public void setProperties(List<SystemProperty> properties) {
         this.properties = properties;
     }
+
+	@Override
+	public String toString() {
+		return "SystemProperties [properties=" + properties + "]";
+	}
+    
 }

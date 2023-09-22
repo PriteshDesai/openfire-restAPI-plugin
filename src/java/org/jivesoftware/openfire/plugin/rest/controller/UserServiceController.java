@@ -16,16 +16,29 @@
 
 package org.jivesoftware.openfire.plugin.rest.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import javax.ws.rs.core.Response;
+
 import org.jivesoftware.openfire.SessionManager;
 import org.jivesoftware.openfire.SharedGroupException;
 import org.jivesoftware.openfire.XMPPServer;
 import org.jivesoftware.openfire.group.Group;
 import org.jivesoftware.openfire.group.GroupManager;
+import org.jivesoftware.openfire.group.GroupNameInvalidException;
 import org.jivesoftware.openfire.group.GroupNotFoundException;
 import org.jivesoftware.openfire.lockout.LockOutManager;
 import org.jivesoftware.openfire.plugin.rest.RESTServicePlugin;
 import org.jivesoftware.openfire.plugin.rest.dao.PropertyDAO;
-import org.jivesoftware.openfire.plugin.rest.entity.*;
+import org.jivesoftware.openfire.plugin.rest.entity.GroupEntity;
+import org.jivesoftware.openfire.plugin.rest.entity.RosterEntities;
+import org.jivesoftware.openfire.plugin.rest.entity.RosterItemEntity;
+import org.jivesoftware.openfire.plugin.rest.entity.UserEntities;
+import org.jivesoftware.openfire.plugin.rest.entity.UserEntity;
+import org.jivesoftware.openfire.plugin.rest.entity.UserGroupsEntity;
+import org.jivesoftware.openfire.plugin.rest.entity.UserProperty;
 import org.jivesoftware.openfire.plugin.rest.exceptions.ExceptionType;
 import org.jivesoftware.openfire.plugin.rest.exceptions.ServiceException;
 import org.jivesoftware.openfire.plugin.rest.utils.UserUtils;
@@ -42,11 +55,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xmpp.packet.JID;
 import org.xmpp.packet.StreamError;
-
-import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * The Class UserServiceController.
@@ -423,6 +431,11 @@ public class UserServiceController {
         return groupNames;
     }
 
+    
+    /*
+   	 * Custom Code: Add only throws GroupNameInvalidException in the below method
+   	 */ 
+    
     /**
      * Adds the user to group.
      *
@@ -432,8 +445,9 @@ public class UserServiceController {
      *            the user groups entity
      * @throws ServiceException
      *             the service exception
+     * @throws GroupNameInvalidException 
      */
-    public void addUserToGroups(String username, UserGroupsEntity userGroupsEntity) throws ServiceException {
+    public void addUserToGroups(String username, UserGroupsEntity userGroupsEntity) throws ServiceException, GroupNameInvalidException {
         if (userGroupsEntity != null) {
             log("Adding user: " + username + " to groups");
             Collection<Group> groups = new ArrayList<>();
@@ -455,14 +469,20 @@ public class UserServiceController {
         }
     }
     
+    
+    /*
+	 * Custom Code: Add only throws GroupNameInvalidException in the below method
+	 */   
+    
     /**
      * Adds the user to group.
      *
      * @param username the username
      * @param groupName the group name
      * @throws ServiceException the service exception
+     * @throws GroupNameInvalidException 
      */
-    public void addUserToGroup(String username, String groupName) throws ServiceException {
+    public void addUserToGroup(String username, String groupName) throws ServiceException, GroupNameInvalidException {
         log("Adding user: " + username + " to a group: " + groupName);
         Group group;
         try {

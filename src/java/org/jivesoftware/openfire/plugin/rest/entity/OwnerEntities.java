@@ -49,4 +49,10 @@ public class OwnerEntities extends AffiliatedEntities
     {
         return owners == null ? new String[0] : owners.toArray(new String[0]);
     }
+
+	@Override
+	public String toString() {
+		return "OwnerEntities [owners=" + owners + "]";
+	}
+    
 }

@@ -182,6 +182,10 @@ public class SecurityAuditLog {
 		this.details = details;
 	}
 
-
+	@Override
+	public String toString() {
+		return "SecurityAuditLog [logId=" + logId + ", username=" + username + ", timestamp=" + timestamp + ", summary="
+				+ summary + ", node=" + node + ", details=" + details + "]";
+	}
 	
 }

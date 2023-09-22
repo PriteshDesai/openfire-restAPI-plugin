@@ -89,4 +89,10 @@ public class SystemProperty {
         this.value = value;
     }
 
+	@Override
+	public String toString() {
+		return "SystemProperty [key=" + key + ", value=" + value + "]";
+	}
+
+    
 }
