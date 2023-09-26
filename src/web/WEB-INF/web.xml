@@ -12,6 +12,11 @@
             <param-value>org.jivesoftware.openfire.plugin.rest.service.JerseyWrapper</param-value>
         </init-param>
     </servlet>
+    
+    <!-- <servlet>
+        <servlet-name>JerseyWrapper</servlet-name>
+        <servlet-class>org.jivesoftware.openfire.plugin.rest.service.JerseyWrapper</servlet-class>
+    </servlet> -->
 
     <!-- Servlet mappings -->
     <servlet-mapping>

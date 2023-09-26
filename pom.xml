@@ -62,11 +62,11 @@
 		<!-- </dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.10.1</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
@@ -125,11 +125,11 @@
 		</dependency>
 
 		<!-- Custom code Start -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>jsr311-api</artifactId>
 			<version>1.1.1</version>
-		</dependency>
+		</dependency> -->
 		<!-- Custom code End -->
 
 		<!-- Testing scope dependencies -->
@@ -155,48 +155,67 @@
 		</dependency>
 
 	</dependencies>
-	
-	<!-- Custom code Start (Comment the Code) -->
 
-	<!-- <profiles> <profile> <id>deps</id> <build> <plugins> <plugin> <groupId>org.owasp</groupId> 
-		<artifactId>dependency-check-maven</artifactId> <version>7.1.1</version> 
-		<configuration> <skipProvidedScope>true</skipProvidedScope> <skipRuntimeScope>true</skipRuntimeScope> 
-		<suppressionFiles> <suppressionFile>.dependency-check-suppressions.xml</suppressionFile> 
-		</suppressionFiles> </configuration> <executions> <execution> <goals> <goal>check</goal> 
-		</goals> </execution> </executions> </plugin> </plugins> </build> </profile> 
-		</profiles> -->
-		
-	<!-- Custom code End (Comment the Code) -->
-		
+	<!-- Custom code Start (UnComment the Original Code) -->
 
-		<!-- Custom code Start (Comment the Code) -->
-	
-<!-- 	<repositories>
- -->		
- 	<!-- Where we obtain dependencies. -->
-		<!-- <repository>
+	<profiles>
+		<profile>
+			<id>deps</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.owasp</groupId>
+						<artifactId>dependency-check-maven</artifactId>
+						<version>7.1.1</version>
+						<configuration>
+							<skipProvidedScope>true</skipProvidedScope>
+							<skipRuntimeScope>true</skipRuntimeScope>
+							<suppressionFiles>
+								<suppressionFile>.dependency-check-suppressions.xml</suppressionFile>
+							</suppressionFiles>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<!-- Custom code End (UnComment the Original Code) -->
+
+
+	<!-- Custom code Start (UnComment the Original Code) -->
+
+	<repositories>
+		<!-- Where we obtain dependencies. -->
+		<repository>
 			<id>igniterealtime</id>
 			<name>Ignite Realtime Repository</name>
 			<url>https://igniterealtime.org/archiva/repository/maven/</url>
-		</repository> -->
-<!-- 	</repositories>
- -->
- 
- 	<!-- Custom code End (Comment the Code) -->
- 
+		</repository>
+	</repositories>
+
+	<!-- Custom code End (UnComment the Original Code) -->
+
 	<pluginRepositories>
-		<!-- Custom code Start (Comment the Code) -->
-		
+		<!-- Custom code Start (UnComment the Original Code) -->
+
 		<!-- Typically used to retrieve Maven plugins used by this project from. 
 			This apparently is also used to obtain the dependencies _used by_ plugins 
 			(eg: openfire-plugin-assembly-descriptor) -->
-		<!-- <pluginRepository>
+		<pluginRepository>
 			<id>igniterealtime</id>
 			<name>Ignite Realtime Repository</name>
 			<url>https://igniterealtime.org/archiva/repository/maven/</url>
-		</pluginRepository>-->
-		
-		 <!-- Custom code End (Comment the Code) -->
+		</pluginRepository>
+
+		<!-- Custom code End (UnComment the Original Code) -->
 	</pluginRepositories>
 
 </project>
