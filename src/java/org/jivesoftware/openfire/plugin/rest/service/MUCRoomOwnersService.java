@@ -53,7 +53,7 @@ public class MUCRoomOwnersService {
             @DefaultValue("conference") @QueryParam("servicename") String serviceName,
             @PathParam("roomName") String roomName) throws ServiceException {
     	LOG.debug("MUCRoomOwnersService: deleteMUCRoomOwner(): START : serviceName: " + serviceName + " jid: " + jid + " roomName: " + roomName);
-        MUCRoomController.getInstance().deleteAffiliation(serviceName, roomName, jid);
+        MUCRoomController.getInstance().deleteAffiliation1(serviceName, roomName, jid);
         LOG.debug("MUCRoomOwnersService: deleteMUCRoomOwner(): END");
         return Response.status(Status.OK).build();
     }
@@ -64,7 +64,7 @@ public class MUCRoomOwnersService {
             @DefaultValue("conference") @QueryParam("servicename") String serviceName,
             @PathParam("roomName") String roomName) throws ServiceException {
     	LOG.debug("MUCRoomOwnersService: deleteMUCRoomOwnerGroup(): START : serviceName: " + serviceName + " groupname: " + groupname + " roomName: " + roomName);
-        MUCRoomController.getInstance().deleteAffiliation(serviceName, roomName, groupname);
+        MUCRoomController.getInstance().deleteAffiliation1(serviceName, roomName, groupname);
         LOG.debug("MUCRoomOwnersService: deleteMUCRoomOwnerGroup(): END");
         return Response.status(Status.OK).build();
     }

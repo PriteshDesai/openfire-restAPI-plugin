@@ -53,7 +53,7 @@ public class MUCRoomAdminsService {
             @DefaultValue("conference") @QueryParam("servicename") String serviceName,
             @PathParam("roomName") String roomName) throws ServiceException {
     	Log.debug("MUCRoomAdminsService: deleteMUCRoomAdmin(): START : serviceName: " + serviceName + " jid: " + jid + " roomName: " + roomName);
-        MUCRoomController.getInstance().deleteAffiliation(serviceName, roomName, jid);
+        MUCRoomController.getInstance().deleteAffiliation1(serviceName, roomName, jid);
         Log.debug("MUCRoomAdminsService: deleteMUCRoomAdmin(): END");
         return Response.status(Status.OK).build();
     }
@@ -64,7 +64,7 @@ public class MUCRoomAdminsService {
             @DefaultValue("conference") @QueryParam("servicename") String serviceName,
             @PathParam("roomName") String roomName) throws ServiceException {
     	Log.debug("MUCRoomAdminsService: deleteMUCRoomAdminGroup(): START : serviceName: " + serviceName + " groupname: " + groupname + " roomName: " + roomName);
-        MUCRoomController.getInstance().deleteAffiliation(serviceName, roomName, groupname);
+        MUCRoomController.getInstance().deleteAffiliation1(serviceName, roomName, groupname);
         Log.debug("MUCRoomAdminsService: deleteMUCRoomAdminGroup(): END");
         return Response.status(Status.OK).build();
     }

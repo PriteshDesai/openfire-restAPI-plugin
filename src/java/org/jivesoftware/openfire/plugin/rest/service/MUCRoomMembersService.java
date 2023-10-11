@@ -69,21 +69,20 @@ public class MUCRoomMembersService {
 			@DefaultValue("conference") @QueryParam("servicename") String serviceName,
 			@PathParam("roomName") String roomName) throws ServiceException {
     	LOG.debug("MUCRoomMembersService: deleteMUCRoomMember(): START : serviceName: " + serviceName + " jid: " + jid + " roomName: " + roomName);
-
-		MUCRoomController.getInstance().deleteAffiliation(serviceName, roomName, jid);
+    	
+		MUCRoomController.getInstance().deleteAffiliation1(serviceName, roomName, jid);
 		
 		MUCRoom chatRoom = XMPPServer.getInstance().getMultiUserChatManager().getMultiUserChatService(serviceName)
-				.getChatRoom(roomName);
-		
+				.getChatRoom(roomName);		
 		MUCRoomEntity room = MUCRoomController.getInstance().getChatRoom(roomName, serviceName, false);
-		
+
 		int memberCount = 0;
 		int ownerCount = 0;
 
-		LOG.info("Owners: " + chatRoom.getOwners());
-		LOG.info("Members: " + chatRoom.getMembers());
-		LOG.info("Owners Size: " + chatRoom.getOwners().size());
-		LOG.info("Members Size: " + chatRoom.getMembers().size());
+		LOG.debug("Owners: " + chatRoom.getOwners());
+		LOG.debug("Members: " + chatRoom.getMembers());
+		LOG.debug("Owners Size: " + chatRoom.getOwners().size());
+		LOG.debug("Members Size: " + chatRoom.getMembers().size());
 
 		if (chatRoom != null) {
 			ownerCount = chatRoom.getOwners().size();
@@ -93,6 +92,7 @@ public class MUCRoomMembersService {
 
 		if ((ownerCount + memberCount) <= 1) {
 			// delete the room if only one user in the room.
+			LOG.debug("Delete the Chat room is called");
 			room.setPersistent(false);
 			MUCRoomController.getInstance().deleteChatRoom(roomName, serviceName);
 		}
@@ -106,8 +106,8 @@ public class MUCRoomMembersService {
 	public Response deleteMUCRoomMemberGroup(@PathParam("groupname") String groupname,
 			@DefaultValue("conference") @QueryParam("servicename") String serviceName,
 			@PathParam("roomName") String roomName) throws ServiceException {
-    	LOG.debug("MUCRoomMembersService: deleteMUCRoomMemberGroup(): START : serviceName: " + serviceName + " groupname: " + groupname + " roomName: " + roomName);
-		MUCRoomController.getInstance().deleteAffiliation(serviceName, roomName, groupname);
+    	LOG.info("MUCRoomMembersService: deleteMUCRoomMemberGroup(): START : serviceName: " + serviceName + " groupname: " + groupname + " roomName: " + roomName);
+		MUCRoomController.getInstance().deleteAffiliation1(serviceName, roomName, groupname);
 		LOG.debug("MUCRoomMembersService: deleteMUCRoomMemberGroup(): END");
 		return Response.status(Status.OK).build();
 	}

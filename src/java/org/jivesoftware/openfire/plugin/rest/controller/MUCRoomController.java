@@ -1255,7 +1255,7 @@ public class MUCRoomController {
 	 * @param jid         the jid
 	 * @throws ServiceException the service exception
 	 */
-	public void deleteAffiliation(String serviceName, String roomName, String jid) throws ServiceException {
+	public void deleteAffiliation1(String serviceName, String roomName, String jid) throws ServiceException {
 		LOG.debug("MUCRoomController: deleteAffiliation(): START : serviceName: " + serviceName + " roomName: " + roomName + " jid: " + jid);
 
 		MUCRoom room = XMPPServer.getInstance().getMultiUserChatManager().getMultiUserChatService(serviceName)
